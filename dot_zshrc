@@ -1,15 +1,3 @@
-# POWERLEVEL9K_MODE='awesome-fontconfig'
-POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator)
-export PATH="/usr/local/bin:$PATH"
-# zsh, oh-my-zsh, antigen setup for mac
-# on mac you need to install:
-# brew install zsh antigen zsh-completions
-# find more information @ https://meabed.com/zsh-oh-my-zsh-up-and-running
-
-source /usr/local/share/antigen/antigen.zsh
-source ~/.fonts/*.sh
 
 export LSCOLORS='exfxcxdxbxegedabagacad'
 export CLICOLOR=true
@@ -22,9 +10,6 @@ export LESS='-giAMR'
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-
-# Load local sh, export, for example export GOPATH, export JAVA_HOME, export ANDROID_SDK, etc...
-[[ -s "$HOME/.export" ]] && source "$HOME/.export"
 
 # Load the oh-my-zsh's library
 antigen use oh-my-zsh
@@ -40,15 +25,6 @@ antigen bundles <<EOBUNDLES
 	zsh-users/zsh-autosuggestions
   unixorn/autoupdate-antigen.zshplugin
 EOBUNDLES
-
-# Load the theme @ https://github.com/robbyrussell/oh-my-zsh/tree/master/themes/
-# Load the theme
-# simple and fast
-# antigen theme steeef
-# antigen theme muse
-# antigen theme bhilburn/powerlevel9k powerlevel9k
-# cool but slow
-# antigen theme https://github.com/denysdovhan/spaceship-zsh-theme spaceship
 
 # syntax highlighting must come below the bundle to set the correct paths/variables with history search
 antigen bundle zdharma/fast-syntax-highlighting
@@ -124,10 +100,5 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
 . /usr/local/opt/asdf/asdf.sh
 
-export GOPATH="${HOME}/projects/go"
-export PATH="${PATH}:${GOPATH}:${GOPATH}/bin"
