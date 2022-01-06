@@ -1,3 +1,4 @@
+# Created by newuser for 5.8
 
 export LSCOLORS='exfxcxdxbxegedabagacad'
 export CLICOLOR=true
@@ -11,27 +12,11 @@ export LESS='-giAMR'
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# Load the oh-my-zsh's library
-antigen use oh-my-zsh
-antigen bundle z
+#Load Antigen
+source /home/linuxbrew/.linuxbrew/share/antigen/antigen.zsh
 
-# bundle antigen zsh plugins @ https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins
-antigen bundles <<EOBUNDLES
-	common-aliases
-	history
-	git
-	docker
-	zsh-users/zsh-completions
-	zsh-users/zsh-autosuggestions
-  unixorn/autoupdate-antigen.zshplugin
-EOBUNDLES
-
-# syntax highlighting must come below the bundle to set the correct paths/variables with history search
-antigen bundle zdharma/fast-syntax-highlighting
-antigen bundle zsh-users/zsh-history-substring-search
-
-# Tell antigen that you're done
-antigen apply
+# Load Antigen configurations
+antigen init ~/.antigenrc
 
 # bind keys
 zmodload zsh/terminfo
@@ -59,10 +44,8 @@ alias afk='pmset sleepnow'
 alias dclean='docker system prune'
 alias ddefrag='docker run --privileged --pid=host docker/desktop-reclaim-space'
 
-
 # auto-completion with selection / menu / error correction / cache / etc...
 zstyle ':completion:*:*:*:*:*' menu select
-
 zstyle ':completion:*' verbose true
 zstyle ':completion:*' menu yes select=1
 zstyle ':completion:*' substitute 0
@@ -96,9 +79,19 @@ zstyle ':filter-select' case-insensitive yes # enable case-insensitive search
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-# evals
-eval "$(direnv hook zsh)"
+#update PATH
+export PATH="$HOME/.local/bin:$PATH"
+
+#evals
+#brew to path
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+#use starship
 eval "$(starship init zsh)"
 
-. /usr/local/opt/asdf/asdf.sh
+#use asdf
+. $(brew --prefix)/opt/asdf/libexec/asdf.sh
+
+#use direnv
+eval "$(direnv hook zsh)"
 

@@ -1,0 +1,23 @@
+# Load oh-my-zsh library
+antigen use oh-my-zsh
+
+# Load bundles from the default repo (oh-my-zsh)
+antigen bundles <<EOBUNDLES
+  git
+  z
+  common-aliases
+  history
+  command-not-found
+  docker
+  unixorn/autoupdate-antigen.zshplugin
+EOBUNDLES
+
+# Load bundles from external repos
+# syntax highlighting must come below the bundle to set the correct paths/variables with history search
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle zdharma-continuum/fast-syntax-highlighting
+
+# Tell Antigen that you're done
+antigen apply
