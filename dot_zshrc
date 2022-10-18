@@ -43,6 +43,7 @@ alias gbsort='git branch --sort=-committerdate'
 alias afk='pmset sleepnow'
 alias dclean='docker system prune'
 alias ddefrag='docker run --privileged --pid=host docker/desktop-reclaim-space'
+alias glc='git log --pretty="%C(Yellow)%h  %C(reset)%ad (%C(Green)%cr%C(reset))%x09 %C(Cyan)%an: %C(reset)%s" --date=format:"%Y-%m-%d %H:%M"'
 
 # auto-completion with selection / menu / error correction / cache / etc...
 zstyle ':completion:*:*:*:*:*' menu select
@@ -81,6 +82,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 #update PATH
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 #evals
 #brew to path
