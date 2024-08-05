@@ -13,7 +13,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 #Load Antigen
-source /home/linuxbrew/.linuxbrew/share/antigen/antigen.zsh
+source /opt/homebrew/share/antigen/antigen.zsh
 
 # Load Antigen configurations
 antigen init ~/.antigenrc
@@ -29,12 +29,28 @@ HISTSIZE=10240000               # big history
 SAVEHIST=10240000               # big history
 LISTMAX=999999
 
+# Better programs if they're installed
+function alias_if_installed() {
+  local command="$1" alias="$2"
+  if [ -x "$(command -v "$command")" ]; then
+    alias "$alias"="$command"
+  fi
+}
+
+alias_if_installed exa ls
+alias_if_installed bat cat
+alias_if_installed htop top
+alias_if_installed dfc df
+alias_if_installed dust du
+alias_if_installed procs ps
+
+
 # aliases
 alias gundo='git reset --soft HEAD~1'
 alias grbim='git rebase -i main'
 alias gaii= 'ga -i'
 alias gfix='git commit -v -a --no-edit --amend && git push --force-with-lease'
-alias ls='colorls'
+alias ls='exa'
 alias gdl='git --no-pager diff --name-only'
 alias gdlc='git --no-pager diff --name-only --cached'
 alias gusa='git reset -q HEAD -- .'
@@ -48,6 +64,7 @@ alias copy='xclip -sel clip'
 alias paste='xclip -sel clip -o'
 alias fdf='find . | fzf'
 alias fdfc='find . | fzf | xargs code'
+
 
 
 # auto-completion with selection / menu / error correction / cache / etc...
@@ -88,7 +105,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 #evals
 #brew to path
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 #use starship
 eval "$(starship init zsh)"
@@ -98,6 +115,9 @@ eval "$(starship init zsh)"
 
 #update PATH
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
+# link fzf to the shell
+eval "$(fzf --zsh)"
 
 #use direnv
 eval "$(direnv hook zsh)"

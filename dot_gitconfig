@@ -71,6 +71,7 @@
             git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
         fi \
     }; f"
+	resolve-all = !sh -c \"git status --porcelain | awk '/^(UU|AA)/ {print \\$2}' | xargs -I {} git checkout --$1 {}\"
 
 [apply]
 
@@ -98,7 +99,7 @@
 
     # Sets delta as pager for git log and git diff
     pager = delta
-	editor = code --wait
+	editor = code-insiders --wait
 [color]
 
     # Use colors in Git commands that are capable of colored output when
@@ -149,7 +150,7 @@
 
     # Include summaries of merged commits in newly created merge commit messages
     log = true
-    conflictstyle = diff3
+    conflictstyle = zdiff3
 
 [push]
 
@@ -187,3 +188,5 @@
 	email = tobin.elavathil@gmail.com
 [credential]
 	helper = cache
+[init]
+	defaultBranch = main

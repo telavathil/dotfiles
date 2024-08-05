@@ -1,4 +1,26 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = false
+
+# Replace the '❯' symbol in the prompt with '➜'
+[character] # The name of the module we are configuring is 'character'
+success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+
+[line_break]
+disabled = true
+
+[git_branch]
+symbol = " "
+format = "[$symbol$branch]($style) "
+# truncation_length = 4
+truncation_symbol = "…/"
+style = "bold green"
+
 [git_status]
+format = '[\($all_status$ahead_behind\)]($style) '
+style = "bold green"
 conflicted = "🏳"
 ahead = "⬆:${count}"
 behind = "⬇:${count}"
@@ -9,3 +31,30 @@ modified = "📝"
 staged = '[++\($count\)](green)'
 renamed = "👅"
 deleted = "🗑"
+
+[directory]
+truncation_length = 1
+truncation_symbol = "../"
+home_symbol = "~"
+read_only_style = "197"
+read_only = '🔒'
+style = 'bold cyan'
+format = "[$path]($style)[$read_only]($read_only_style) "
+
+[aws]
+format = 'on [$symbol($profile )(\($region\) )]($style)'
+style = 'bold blue'
+symbol = '🅰 '
+
+[username]
+style_user = 'white bold'
+style_root = 'black bold'
+format = 'user: [$user]($style) '
+disabled = false
+show_always = false
+
+[hostname]
+ssh_only = true
+format = '[$ssh_symbol](bold blue) on [$hostname](bold red) '
+trim_at = '.companyname.com'
+disabled = false
