@@ -37,7 +37,7 @@ function alias_if_installed() {
   fi
 }
 
-alias_if_installed exa ls
+alias_if_installed eza ls
 alias_if_installed bat cat
 alias_if_installed htop top
 alias_if_installed dfc df
@@ -50,7 +50,7 @@ alias gundo='git reset --soft HEAD~1'
 alias grbim='git rebase -i main'
 alias gaii= 'ga -i'
 alias gfix='git commit -v -a --no-edit --amend && git push --force-with-lease'
-alias ls='exa'
+alias ls='eza'
 alias gdl='git --no-pager diff --name-only'
 alias gdlc='git --no-pager diff --name-only --cached'
 alias gusa='git reset -q HEAD -- .'
