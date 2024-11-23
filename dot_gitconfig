@@ -99,7 +99,7 @@
 
     # Sets delta as pager for git log and git diff
     pager = delta
-	editor = code --wait
+	editor = cursor --wait
 [color]
 
     # Use colors in Git commands that are capable of colored output when

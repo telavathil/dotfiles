@@ -3,7 +3,8 @@
 export LSCOLORS='exfxcxdxbxegedabagacad'
 export CLICOLOR=true
 export VSCODE=code
-export EDITOR="$VSCODE -w"
+export CURSOR_EDITOR=cursor
+export EDITOR="$CURSOR_EDITOR -w"
 export VISUAL=$EDITOR
 export TERM="xterm-256color"
 export PAGER='less'
@@ -64,6 +65,7 @@ alias copy='xclip -sel clip'
 alias paste='xclip -sel clip -o'
 alias fdf='find . | fzf'
 alias fdfc='find . | fzf | xargs code'
+alias dcr='docker-compose down && docker-compose up -d'
 
 
 
